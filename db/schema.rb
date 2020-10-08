@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_06_173406) do
+ActiveRecord::Schema.define(version: 2020_10_08_155124) do
 
   create_table "items", force: :cascade do |t|
     t.string "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "list_items", force: :cascade do |t|
+    t.integer "list_id"
+    t.integer "item_id"
+    t.boolean "completed", default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -28,7 +36,7 @@ ActiveRecord::Schema.define(version: 2020_10_06_173406) do
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "email"
-    t.string "password_digestring"
+    t.string "password_digest"
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
